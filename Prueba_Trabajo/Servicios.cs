@@ -49,7 +49,7 @@ namespace Prueba_Trabajo
 				if (dniBuscar == x.Dni) {
 					
 					listaPacientes.RemoveAt(listaPacientes.IndexOf(x));
-					Console.WriteLine("Paciente eliminado con exito!.\n");
+					Console.WriteLine("Paciente "+ x.Nombre+" eliminado con exito!.\n");
 					break;
 					
 				}
