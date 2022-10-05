@@ -1,0 +1,6 @@
+C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.csprojResolveAssemblyReference.cache
+C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.exe.config
+C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.exe
+C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.pdb
+C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.exe
+C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.pdb
