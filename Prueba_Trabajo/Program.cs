@@ -6,122 +6,149 @@ namespace Prueba_Trabajo
 	{
 		public static void Main(string[] args)
 		{
-			Paciente paciente1 = new Paciente("Facu", 44620625, "Ioma", 123456, "Puto");
-			
-			Turno turno1 = new Turno(paciente1, "08:30");
-			
-			turno1.TurnoDisponible();
-			
-			
-			
-			
-			/*
-			Console.WriteLine("Hello World!");
-			
-			Servicios server = new Servicios();
-			
-			Paciente paciente1 = new Paciente("Facu", 44620625, "Ioma", 123456, "Puto");
-			
-			Paciente paciente2 = new Paciente("Pau", 111111111, "Galeno", 654321, "Hermosa");
-			
-			server.AgregarPaciente(paciente1);
-			
-			server.AgregarPaciente(paciente2);
-			
-			server.VerPaciente(44620625);
-			Console.WriteLine("aaaaaaaaaaaaaaaaaaaa\n \n");
-			server.VerPaciente(111111111);
-			
-			server.BorrarPaciente(44620625);
-			Console.WriteLine("aaaaaaaaaaaaaaaaaaaa\n \n");
-			
-			server.VerTodosPacientes();
-			*/
-			
-			
+			Menu();
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 		}
 	
-		/*
-			ArrayList turnosDisponibles = new ArrayList {"08:00", "08:30", "09:00", "09:30", "10:00", "10:30" ,"11:00", "11:30", "12:00"};
-            
-			ArrayList turnosOcupados = new ArrayList();
+		public static void Menu(){
 			
-			ArrayList listaPacientes = new ArrayList();
-			
-			
-			Paciente paciente1 = new Paciente("Facundo", 44620625, "Particular", 0 , "Puto");
-            Paciente paciente2 = new Paciente("Paula", 44645170, "Galeno", 0154664014, "Dazai");
-            
-           
-            agregarPaciente(paciente1, listaPacientes );
-			
-            verPacientes(listaPacientes);
-			
-            //nuevoTurno(paciente1, "08:00", turnosOcupados);
-		
-            horariosDisponibles(turnosDisponibles);
-            
-            //validarHorarios("08:00", turnosDisponibles );
-            
-			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true);
-			
-		}
-		
-		/*--------------------------------------------------------------------------------------------------------------*/
-		
-		/*
-		public static void agregarPaciente(Paciente paciente, ArrayList lista){
+			MostrarOpciones();
 
-			lista.Add(paciente);
-            
-        }
-
-        public static void verPacientes(ArrayList lista){
-
-            foreach (Paciente paciente in lista) {
-
-                Console.WriteLine("Dni: " + paciente.Dni + "\nNombre: " + paciente.Nombre);
-            }
-        }
-		
-		/*--------------------------------------------------------------------------------------------------------------*/
-	/*
-        public static void horariosDisponibles(ArrayList turnosD){
+			int opcion = int.Parse(Console.ReadLine());
+			Servicios servicio = new Servicios();
+			while (opcion != 0) {
+				
+				if (opcion == 1) {
+					
+					servicio.VerTodosPacientes();
+					MostrarOpciones();
 			
-			if (turnosD.Count >= 0) {
-				foreach (int x in turnosD) {
-					Console.WriteLine("Turno disponible: " + turnosD[x]);
+					opcion = int.Parse(Console.ReadLine());
 				}
-			}
-	
-        }
-		
-
-        public static void  nuevoTurno(Paciente paciente, string horario, ArrayList turnosDispo , ArrayList turnosOcu){
-
-			if (turnosDispo.Contains(horario) ) { // Se comprueba si el horario pedido esta disponible. Caso true,se elimina de la lista 
-				turnosOcu.Add(horario);           // de disponibles y añade a lista de ocupados
-				turnosDispo.IndexOf(horario);
-			}
-			else if ((turnosDispo.Count == 0) && (turnosOcu.Count == 9)){	//Si listaDisponible esta vacia y  ListaOcupada completa es 
-				                                                            // que ya no hay turnos disponibles
-				Console.WriteLine("Horarios no disponibles, llamar próximo día de atencion");
+				else if (opcion == 2) {
+					
+					
+					servicio.AgregarPaciente(NuevoPaciente());
+					MostrarOpciones();
+					opcion = int.Parse(Console.ReadLine());
+					
+					
+				}
+				else if (opcion == 3) {
+					Console.WriteLine("Ingrese dni del paciente que desea eliminar.");
+					int dni = int.Parse(Console.ReadLine());
+					servicio.BorrarPaciente(dni);
+					MostrarOpciones();
+			
+					opcion = int.Parse(Console.ReadLine());
+					
+				}
+				else if (opcion == 4) {
+					
+					Console.WriteLine("Ingrese dni del paciente que desea diagnosticar.");
+					int dni = int.Parse(Console.ReadLine());
+					servicio.ActualizarDiagnostico(dni);
+					MostrarOpciones();
+			
+					opcion = int.Parse(Console.ReadLine());
+				}
+				else if (opcion == 5) {
+					servicio.TurnoDisponible();
+					MostrarOpciones();
+			
+					opcion = int.Parse(Console.ReadLine());
+					
+				}
+				else if (opcion == 6) {
+					
+					Console.WriteLine("El paciente se encuentra en el sistema? Ingrese si/no: ");
+					string dato = Console.ReadLine();
+					if (dato =="si" ) {
+						Console.WriteLine("Ingrese dni del paciente para crear turno: ");
+						int dni = int.Parse(Console.ReadLine());
+						servicio.BuscarPaciente(dni);
+						MostrarOpciones();
+						opcion = int.Parse(Console.ReadLine());
+					}
+					
+					else if(dato == "no"){
+						MostrarOpciones();
+						opcion = int.Parse(Console.ReadLine());
+					}
+					
+				}
+				else if (opcion == 7) {
+					Console.WriteLine("Ingrese el horario del turno a eliminar: ");
+					string horario = Console.ReadLine();
+					servicio.ElimiarTurno(horario);
+					MostrarOpciones();
+					opcion = int.Parse(Console.ReadLine());
+					
+				}
+				else if (opcion == 8) {
+					
+					servicio.VerTurnos();
+					MostrarOpciones();
+					opcion = int.Parse(Console.ReadLine());
+				}
+				else if (opcion == 9) {
+					servicio.VerObrasSociales();
+					MostrarOpciones();
+					opcion = int.Parse(Console.ReadLine());
+				}
+				else{
+					Console.WriteLine("Opcion incorrecta, ingrese una opcion valida.");
+					MostrarOpciones();
+					opcion = int.Parse(Console.ReadLine());
+				}
+				
 				
 			}
-			
-			
-            Turno turno = new Turno(paciente, horario);
-
-            if ( !lista.Contains(turno.Horario) ) {
-            	
-            	lista.Add(turno.Horario);
-            }
+		
 		}
-		*/
-	
-	
+		
+		public static Paciente NuevoPaciente(){
+			
+			Console.WriteLine("Ingrese nombre del paciente");
+			string nombre = Console.ReadLine();
+			Console.WriteLine("Ingrese dni del paciente");
+			int dni = int.Parse(Console.ReadLine());
+			Console.WriteLine("Tiene obra social?Ingrese si/no");
+			string condicion = Console.ReadLine();
+			if (condicion == "si") {
+				Console.WriteLine("Ingrese la obra social del paciente");
+				string obra_social = Console.ReadLine();
+				Console.WriteLine("Ingrese el numero de afiliado del paciente");
+				int nro_afiliado = int.Parse(Console.ReadLine());
+				Console.WriteLine("Ingrese el diagnostico del paciente");
+				string diagnostico = Console.ReadLine();
+				Paciente paciente = new Paciente(nombre, dni, obra_social, nro_afiliado, diagnostico);
+				return paciente;
+			
+			}
+				
+			else{
+				string obra_social = "No tiene/Particular";
+				int nro_afiliado = 00;
+				Console.WriteLine("Ingrese el diagnostico del paciente");
+				string diagnostico = Console.ReadLine();
+				Paciente paciente = new Paciente(nombre, dni, obra_social, nro_afiliado,diagnostico);
+			
+				return paciente;
+			
+			}
+			
+		}
+		
+		public static void MostrarOpciones(){
+			
+			Console.WriteLine("Opcion 1 para ver lista de pacientes.\nOpcion 2 para agregar paciente." +
+			                  "\nOpcion 3 para eliminar paciente.\nOpcion 4 actualizar diagnostico de un paciente." +
+			                  "\nOpcion 5 para ver turnos disponibles.\nOpcion 6 para agregar un turno." +
+			                  "\nOpcion 7 para eliminar un turno.\nOpcion 8 para ver todos los turnos ocupados." +
+			                  "\nOpcion 9 para ver las obras sociales que cubre el medico.\nOpcion 0 para salir\n");
+		}
+		
 	}
 }
