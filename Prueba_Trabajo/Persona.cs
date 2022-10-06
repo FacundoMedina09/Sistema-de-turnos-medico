@@ -7,8 +7,8 @@ namespace Prueba_Trabajo
 	/// </summary>
 	public class Persona
 	{
-		private string nombre;
-		private int dni;
+		protected string nombre;
+		protected int dni;
 		
 		
 		public Persona(string nombre, int dni)
