@@ -20,7 +20,6 @@ namespace Prueba_Trabajo
 			MostrarOpciones();
 
 			int opcion = int.Parse(Console.ReadLine());
-			Servicios servicio = new Servicios();
 			while (opcion != 0) {
 				
 				if (opcion == 1) {
@@ -151,18 +150,18 @@ namespace Prueba_Trabajo
 		public static Paciente CrearPaciente(ArrayList listaPacientes, ArrayList obraSociales){
 			
 			Console.WriteLine("Ingrese nombre del paciente");
-			string nombre = Console.ReadLine();
+			string nombre = Console.ReadLine().ToUpper();
 			Console.WriteLine("Ingrese dni del paciente");
 			int dni = int.Parse(Console.ReadLine());
 			Console.WriteLine("Tiene obra social?Ingrese si/no");
-			string condicion = Console.ReadLine();
-			if (condicion == "si") {
+			string condicion = Console.ReadLine().ToUpper();
+			if (condicion == "SI") {
 				Console.WriteLine("Ingrese la obra social del paciente");
-				string obra_social = Console.ReadLine();
+				string obra_social = Console.ReadLine().ToUpper();
 				Console.WriteLine("Ingrese el numero de afiliado del paciente");
 				int nro_afiliado = int.Parse(Console.ReadLine());
 				Console.WriteLine("Ingrese el diagnostico del paciente");
-				string diagnostico = Console.ReadLine();
+				string diagnostico = Console.ReadLine().ToUpper();
 				Paciente paciente = new Paciente(nombre, dni, obra_social, nro_afiliado, diagnostico);
 				listaPacientes.Add(paciente);										//Agregar paciente a la lista de pacientes
 				if (!(obraSociales.Contains(paciente.Obra_social))) {				//Agregar obra social del paciente a la lista
@@ -173,10 +172,10 @@ namespace Prueba_Trabajo
 			}
 				
 			else{
-				string obra_social = "No tiene/Particular";
+				string obra_social = "NO TIENE/PARTICULAR";
 				int nro_afiliado = 00;
 				Console.WriteLine("Ingrese el diagnostico del paciente");
-				string diagnostico = Console.ReadLine();
+				string diagnostico = Console.ReadLine().ToUpper();
 				Paciente paciente = new Paciente(nombre, dni, obra_social, nro_afiliado,diagnostico);
 			    listaPacientes.Add(paciente);										//Agregar paciente a la lista de pacientes
 			    Console.WriteLine("Paciente agregado con exito!.\n");
@@ -246,7 +245,7 @@ namespace Prueba_Trabajo
 				if (x.Dni == dniBuscar) {
 					
 					Console.WriteLine("Ingrese el nuevo Diagnostico del paciente: ");
-					string diagnostico = Console.ReadLine();
+					string diagnostico = Console.ReadLine().ToUpper();
 					x.Diagnostico = diagnostico;
 					Console.WriteLine("Diagnostico Actualizado.\n");
 				}
