@@ -152,35 +152,19 @@ namespace Prueba_Trabajo
 		
 		public static Paciente CrearPaciente(ArrayList listaPacientes, ArrayList obraSociales){
 			
-<<<<<<< HEAD
 			Console.WriteLine("\n-Ingrese nombre del paciente:\n");
-			string nombre = Console.ReadLine();
+			string nombre = Console.ReadLine().ToUpper();
 			Console.WriteLine("\n-Ingrese dni del paciente:\n");
 			int dni = int.Parse(Console.ReadLine());
 			Console.WriteLine("\n-Tiene obra social?:	      (Ingrese si/no)\n");
-			string condicion = Console.ReadLine();
+			string condicion = Console.ReadLine().ToUpper();
 			if (condicion == "si") {
 				Console.WriteLine("\n-Ingrese la obra social del paciente:\n");
-				string obra_social = Console.ReadLine();
+				string obra_social = Console.ReadLine().ToUpper();
 				Console.WriteLine("\n-Ingrese el numero de afiliado del paciente:\n");
 				int nro_afiliado = int.Parse(Console.ReadLine());
 				Console.WriteLine("\n-Ingrese el diagnostico del paciente:\n");
-				string diagnostico = Console.ReadLine();
-=======
-			Console.WriteLine("Ingrese nombre del paciente");
-			string nombre = Console.ReadLine().ToUpper();
-			Console.WriteLine("Ingrese dni del paciente");
-			int dni = int.Parse(Console.ReadLine());
-			Console.WriteLine("Tiene obra social?Ingrese si/no");
-			string condicion = Console.ReadLine().ToUpper();
-			if (condicion == "SI") {
-				Console.WriteLine("Ingrese la obra social del paciente");
-				string obra_social = Console.ReadLine().ToUpper();
-				Console.WriteLine("Ingrese el numero de afiliado del paciente");
-				int nro_afiliado = int.Parse(Console.ReadLine());
-				Console.WriteLine("Ingrese el diagnostico del paciente");
 				string diagnostico = Console.ReadLine().ToUpper();
->>>>>>> aae984811632370e08d1bfecf5e3f310c0ed5a73
 				Paciente paciente = new Paciente(nombre, dni, obra_social, nro_afiliado, diagnostico);
 				listaPacientes.Add(paciente);										//Agregar paciente a la lista de pacientes
 				if (!(obraSociales.Contains(paciente.Obra_social))) {				//Agregar obra social del paciente a la lista
