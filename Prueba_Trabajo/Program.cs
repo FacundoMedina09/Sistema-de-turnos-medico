@@ -17,6 +17,10 @@ namespace Prueba_Trabajo
 			ArrayList turnosOcupados = new ArrayList();
 			ArrayList obrasSociales  = new ArrayList();
 			
+			Console.WriteLine("************************************************************" +
+			                 "\n*********BIENVENIDO AL SISTEMA DE GESTION DE TURNOS*********" + 
+			                "\n************************************************************");
+			
 			MostrarOpciones();
 
 			int opcion = int.Parse(Console.ReadLine());
@@ -41,13 +45,13 @@ namespace Prueba_Trabajo
 				else if (opcion == 3) {
 					
 					if (listaPacientes.Count > 0) {
-						Console.WriteLine("Ingrese dni del paciente que desea eliminar.");
+						Console.WriteLine("\nIngrese dni del paciente que desea eliminar.");
 					    int dni = int.Parse(Console.ReadLine());
 					    BorrarPaciente(listaPacientes, dni);
 				    	
 					}
 					else{
-						Console.WriteLine("Actualmente no hay pacientes, por favor ingrese uno.\n");
+						Console.WriteLine("\nActualmente no hay pacientes, por favor ingrese uno.\n");
 					}
 					MostrarOpciones();
 				    opcion = int.Parse(Console.ReadLine());
@@ -55,14 +59,13 @@ namespace Prueba_Trabajo
 					
 				}
 				else if (opcion == 4) {
-					if (listaPacientes.Count > 0) {
+					if (listaPacientes.Count > 0) { //La lista de pacientes debe ser mayor a 0 para buscar un paciente
 						Console.WriteLine("Ingrese dni del paciente que desea buscar.");
 					    int dni = int.Parse(Console.ReadLine());
 					    VerPaciente(listaPacientes,dni);
-				    	
 					}
 					else{
-						Console.WriteLine("Actualmente no hay pacientes, por favor ingrese uno.\n");
+						Console.WriteLine("\nActualmente no hay pacientes, por favor ingrese uno.\n");
 					}
 					MostrarOpciones();
 					opcion = int.Parse(Console.ReadLine());
@@ -149,6 +152,21 @@ namespace Prueba_Trabajo
 		
 		public static Paciente CrearPaciente(ArrayList listaPacientes, ArrayList obraSociales){
 			
+<<<<<<< HEAD
+			Console.WriteLine("\n-Ingrese nombre del paciente:\n");
+			string nombre = Console.ReadLine();
+			Console.WriteLine("\n-Ingrese dni del paciente:\n");
+			int dni = int.Parse(Console.ReadLine());
+			Console.WriteLine("\n-Tiene obra social?:	      (Ingrese si/no)\n");
+			string condicion = Console.ReadLine();
+			if (condicion == "si") {
+				Console.WriteLine("\n-Ingrese la obra social del paciente:\n");
+				string obra_social = Console.ReadLine();
+				Console.WriteLine("\n-Ingrese el numero de afiliado del paciente:\n");
+				int nro_afiliado = int.Parse(Console.ReadLine());
+				Console.WriteLine("\n-Ingrese el diagnostico del paciente:\n");
+				string diagnostico = Console.ReadLine();
+=======
 			Console.WriteLine("Ingrese nombre del paciente");
 			string nombre = Console.ReadLine().ToUpper();
 			Console.WriteLine("Ingrese dni del paciente");
@@ -162,12 +180,14 @@ namespace Prueba_Trabajo
 				int nro_afiliado = int.Parse(Console.ReadLine());
 				Console.WriteLine("Ingrese el diagnostico del paciente");
 				string diagnostico = Console.ReadLine().ToUpper();
+>>>>>>> aae984811632370e08d1bfecf5e3f310c0ed5a73
 				Paciente paciente = new Paciente(nombre, dni, obra_social, nro_afiliado, diagnostico);
 				listaPacientes.Add(paciente);										//Agregar paciente a la lista de pacientes
 				if (!(obraSociales.Contains(paciente.Obra_social))) {				//Agregar obra social del paciente a la lista
 					obraSociales.Add(paciente.Obra_social);
 				}
-				Console.WriteLine("Paciente agregado con exito!.\n");
+				Console.WriteLine("\n***************¡Paciente agregado con exito!****************\n");
+				//Console.WriteLine("------------------------------------------------------------")
 				return paciente;		
 			}
 				
@@ -200,13 +220,16 @@ namespace Prueba_Trabajo
 			}																
 		}
 		
-		public static void VerPaciente(ArrayList listaPacientes, int dniBuscar){	//Ver paciente desde la lista a traves de su dni	
+		public static void VerPaciente(ArrayList listaPacientes, int dniBuscar){	//Busca al paciente desde la lista a traves de su dni	
 			
 			foreach (Paciente x  in listaPacientes ) {
 				if (dniBuscar == x.Dni) {	
-					Console.WriteLine("Nombre: "+ x.Nombre + "\nDni: "+ x.Dni + "\nObra Social: "+ x.Obra_social +
+					Console.WriteLine("\nSe ha encontrado al paciente" + "\nNombre: "+ x.Nombre + "\nDni: "+ x.Dni + "\nObra Social: "+ x.Obra_social +
 					                  "\nNumero de Afiliado: "+ x.Nro_afiliado + "\nDiagnostico: "+x.Diagnostico+"\n");
 					break;
+				}
+				else{
+					Console.WriteLine("\nNo se ha encontrado ningun paciente con el DNI ingresado.");
 				}
 			}
 		}
@@ -216,12 +239,12 @@ namespace Prueba_Trabajo
 			if (listaPacientes.Count > 0) {
 				foreach (Paciente x  in listaPacientes ) {
 					
-				Console.WriteLine("Nombre: "+ x.Nombre + "\nDni: "+ x.Dni + "\nObra Social: "+ x.Obra_social +
+				Console.WriteLine("\nNombre: "+ x.Nombre + "\nDni: "+ x.Dni + "\nObra Social: "+ x.Obra_social +
 					                  "\nNumero de Afiliado: "+ x.Nro_afiliado + "\nDiagnostico: "+x.Diagnostico+"\n");
 			    }
 			}
 			else{
-				Console.WriteLine("Actualmente no hay pacientes, por favor ingrese uno.\n");		
+				Console.WriteLine("\nActualmente no hay pacientes, por favor ingrese uno.\n");		
 			}	
 		}
 		
@@ -331,13 +354,14 @@ namespace Prueba_Trabajo
 		
 		public static void MostrarOpciones(){
 			
-			Console.WriteLine("Opcion 1 para ver lista de pacientes.\nOpcion 2 para agregar paciente." +
-			                  "\nOpcion 3 para eliminar paciente.\nOpcion 4 para ver un paciente." +
-			                  "\nOpcion 5 para actualizar diagnostico de un paciente." +
-			                  "\nOpcion 6 para ver turnos disponibles.\nOpcion 7 para agregar un turno." +
-			                  "\nOpcion 8 para eliminar un turno.\nOpcion 9 para ver todos los turnos ocupados." +
-			                  "\nOpcion 10 para ver las obras sociales que cubre el medico.\nOpcion 0 para salir\n");
-		}
+			Console.WriteLine("------------------------------------------------------------" +
+			                  "\n-Opcion 1 para ver lista de pacientes.\n-Opcion 2 para agregar paciente." +
+			                  "\n-Opcion 3 para eliminar paciente.\n-Opcion 4 para ver un paciente." +
+			                  "\n-Opcion 5 para actualizar diagnostico de un paciente." +
+			                  "\n-Opcion 6 para ver turnos disponibles.\n-Opcion 7 para agregar un turno." +
+			                  "\n-Opcion 8 para eliminar un turno.\n-Opcion 9 para ver todos los turnos ocupados." +
+			                  "\n-Opcion 10 para ver las obras sociales que cubre el medico.\n-Opcion 0 para salir\n" +
+			                 "------------------------------------------------------------");		}
 		
 	}
 }
