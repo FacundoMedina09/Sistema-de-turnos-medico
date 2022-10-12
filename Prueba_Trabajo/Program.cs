@@ -45,7 +45,7 @@ namespace Prueba_Trabajo
 				else if (opcion == 3) {
 					
 					if (listaPacientes.Count > 0) {
-						Console.WriteLine("\nIngrese dni del paciente que desea eliminar.");
+						Console.WriteLine("\nIngrese dni del paciente que desea eliminar.\n");
 					    int dni = int.Parse(Console.ReadLine());
 					    BorrarPaciente(listaPacientes, dni);
 				    	
@@ -60,7 +60,7 @@ namespace Prueba_Trabajo
 				}
 				else if (opcion == 4) {
 					if (listaPacientes.Count > 0) { //La lista de pacientes debe ser mayor a 0 para buscar un paciente
-						Console.WriteLine("Ingrese dni del paciente que desea buscar.");
+						Console.WriteLine("\nIngrese dni del paciente que desea buscar:\n");
 					    int dni = int.Parse(Console.ReadLine());
 					    VerPaciente(listaPacientes,dni);
 					}
@@ -76,13 +76,13 @@ namespace Prueba_Trabajo
 				else if (opcion == 5) {
 					
 					if (listaPacientes.Count > 0) {
-						Console.WriteLine("Ingrese dni del paciente que desea actualizar diagnostico.");
+						Console.WriteLine("\nIngrese dni del paciente que desea actualizar diagnostico.\n");
 					    int dni = int.Parse(Console.ReadLine());
 					    ActualizarDiagnostico(listaPacientes,dni);
 				    	
 					}
 					else{
-						Console.WriteLine("Actualmente no hay pacientes, por favor ingrese uno.\n");
+						Console.WriteLine("\nActualmente no hay pacientes, por favor ingrese uno.\n");
 					}
 					MostrarOpciones();
 					opcion = int.Parse(Console.ReadLine());
@@ -91,6 +91,7 @@ namespace Prueba_Trabajo
 					
 				}
 				else if (opcion == 6) {
+					
 					TurnoDisponible(turnosDisponibles);
 					MostrarOpciones();
 					opcion = int.Parse(Console.ReadLine());
@@ -100,19 +101,19 @@ namespace Prueba_Trabajo
 					
 					
 						if (listaPacientes.Count > 0) {
-							Console.WriteLine("El paciente se encuentra en el sistema? Ingrese si/no: ");
+							Console.WriteLine("\nEl paciente se encuentra en el sistema? Ingrese si/no: \n");
 							string dato = Console.ReadLine();
 							if (dato =="si" ) {
-								Console.WriteLine("Ingrese dni del paciente al que desea agregarle un turno.");
+								Console.WriteLine("\nIngrese dni del paciente al que desea agregarle un turno.\n");
 						    	int dni = int.Parse(Console.ReadLine());
 						    	BuscarPaciente(listaPacientes, dni, turnosDisponibles, turnosOcupados);
 							}
 							else{
-								Console.WriteLine("Por favor ingrese un paciente.\n");
+								Console.WriteLine("\nPor favor ingrese un paciente.\n");
 							}
 						}
 						else{
-							Console.WriteLine("Actualmente no hay pacientes, por favor ingrese uno.\n");
+							Console.WriteLine("\nActualmente no hay pacientes, por favor ingrese uno.\n");
 						}
 						MostrarOpciones();
 						opcion = int.Parse(Console.ReadLine());
@@ -121,12 +122,12 @@ namespace Prueba_Trabajo
 				else if (opcion == 8) {
 					
 					if (turnosOcupados.Count > 0) {
-						Console.WriteLine("Ingrese el horario del turno a eliminar: ");
+						Console.WriteLine("\nIngrese el horario del turno a eliminar: \n");
 						string horario = Console.ReadLine();
 						ElimiarTurno(turnosDisponibles,turnosOcupados,horario);
 					}
 					else{
-						Console.WriteLine("Actualmente no hay turnos ocupados, por favor ingrese un turno.\n");
+						Console.WriteLine("\nActualmente no hay turnos ocupados, por favor ingrese un turno.\n");
 					}
 					MostrarOpciones();
 					opcion = int.Parse(Console.ReadLine());
@@ -158,7 +159,7 @@ namespace Prueba_Trabajo
 			int dni = int.Parse(Console.ReadLine());
 			Console.WriteLine("\n-Tiene obra social?:	      (Ingrese si/no)\n");
 			string condicion = Console.ReadLine().ToUpper();
-			if (condicion == "si") {
+			if (condicion == "SI") {
 				Console.WriteLine("\n-Ingrese la obra social del paciente:\n");
 				string obra_social = Console.ReadLine().ToUpper();
 				Console.WriteLine("\n-Ingrese el numero de afiliado del paciente:\n");
@@ -178,37 +179,38 @@ namespace Prueba_Trabajo
 			else{
 				string obra_social = "NO TIENE/PARTICULAR";
 				int nro_afiliado = 00;
-				Console.WriteLine("Ingrese el diagnostico del paciente");
+				Console.WriteLine("\n-Ingrese el diagnostico del paciente:\n");
 				string diagnostico = Console.ReadLine().ToUpper();
 				Paciente paciente = new Paciente(nombre, dni, obra_social, nro_afiliado,diagnostico);
 			    listaPacientes.Add(paciente);										//Agregar paciente a la lista de pacientes
-			    Console.WriteLine("Paciente agregado con exito!.\n");
+			    Console.WriteLine("\n***************¡Paciente agregado con exito!****************\n");
 				return paciente;
 			
 			}
 		}
 		
 		public static void BorrarPaciente(ArrayList listaPacientes ,int dniBuscar){
-																		 //Eliminar paciente de la lista de pacientes
+			
+																		//Eliminar paciente de la lista de pacientes
 			  									                         // usando su dni como referencia
 			foreach (Paciente x  in listaPacientes ) {
 				if (dniBuscar == x.Dni) {
 				    listaPacientes.RemoveAt(listaPacientes.IndexOf(x));
-					Console.WriteLine("Paciente "+ x.Nombre+" eliminado con exito!.\n");
-					break;
+					Console.WriteLine("\nPaciente "+ x.Nombre+" eliminado con exito!.\n");
+					return;
 		        }
-																				
-				else{
-					Console.WriteLine("No se encontro ningun paciente con el dni ingresado.\n");											
-				}
-			}																
+																		
+			}
+			
+			Console.WriteLine("\nNo se encontro ningun paciente con el dni ingresado.\n");											
+						  									                         
 		}
 		
 		public static void VerPaciente(ArrayList listaPacientes, int dniBuscar){	//Busca al paciente desde la lista a traves de su dni	
 			
 			foreach (Paciente x  in listaPacientes ) {
 				if (dniBuscar == x.Dni) {	
-					Console.WriteLine("\nSe ha encontrado al paciente" + "\nNombre: "+ x.Nombre + "\nDni: "+ x.Dni + "\nObra Social: "+ x.Obra_social +
+					Console.WriteLine("\nSe ha encontrado al paciente: " + "\nNombre: "+ x.Nombre + "\nDni: "+ x.Dni + "\nObra Social: "+ x.Obra_social +
 					                  "\nNumero de Afiliado: "+ x.Nro_afiliado + "\nDiagnostico: "+x.Diagnostico+"\n");
 					break;
 				}
@@ -236,10 +238,10 @@ namespace Prueba_Trabajo
 																			// trabaja el medico
 			
 			if (obrasSociales.Count == 0) {
-				Console.WriteLine("Actualmente no se trabaja con ninguna obra social.\n");
+				Console.WriteLine("\nActualmente no se trabaja con ninguna obra social.\n");
 			}																
 			else{
-				Console.WriteLine("Las Obras Sociales con las que trabaja el medico son: ");																	
+				Console.WriteLine("\nLas Obras Sociales con las que trabaja el medico son: \n");																	
 				for (int i = 0; i < obrasSociales.Count; i++) {
 				Console.WriteLine(obrasSociales[i]);
 				}		
@@ -251,19 +253,22 @@ namespace Prueba_Trabajo
 			foreach (Paciente x in listaPacientes) {
 				if (x.Dni == dniBuscar) {
 					
-					Console.WriteLine("Ingrese el nuevo Diagnostico del paciente: ");
+					Console.WriteLine("\nIngrese el nuevo Diagnostico del paciente: \n");
 					string diagnostico = Console.ReadLine().ToUpper();
 					x.Diagnostico = diagnostico;
-					Console.WriteLine("Diagnostico Actualizado.\n");
+					Console.WriteLine("\n************¡Diagnostico actualizado con exito!*************\n");
+				}
+				else{
+					Console.WriteLine("\nNo se ha encontrado ningun paciente con el DNI ingresado.");
 				}
 			}
 		}
 		
 		public static void TurnoDisponible(ArrayList turnosDisponibles){				// Ver los turnos que hay disponibles
-		
 			if (turnosDisponibles.Count > 0) {
 				for (int i = 0; i < turnosDisponibles.Count; i++) {
-					Console.WriteLine("Turno disponible: " + turnosDisponibles[i]);
+
+					Console.WriteLine("\nTurno disponible: " + turnosDisponibles[i]);
 				}
 			}
 		}
@@ -274,15 +279,17 @@ namespace Prueba_Trabajo
 				
 				if (x.Dni == dniBuscar) {
 					
-					Console.WriteLine("Se encontro el siguiente paciente: "+ x.Nombre);
-					Console.WriteLine("Ingrese la hora en la que solicita el turno: ");
+					Console.WriteLine("\nSe encontro el siguiente paciente: "+ x.Nombre);
+					Console.WriteLine("\nIngrese la hora en la que solicita el turno: \n");
 					string hora = Console.ReadLine();
 					AgregarTurno(x, hora, turnosDisponibles, turnosOcupados);
-				}
-				else{
-					Console.WriteLine("No se encontro ningun paciente con el dni ingresado, por favor ingresar uno.");
+					return;
 				}
 			}
+			
+			Console.WriteLine("\nNo se encontro ningun paciente con el dni ingresado, por favor ingresar uno.");
+					
+				
 		}
 		
 		public static void AgregarTurno(Paciente paciente,string hora, ArrayList turnosDisponibles, ArrayList turnosOcupados){	// Se comprueba si el horario pedido esta disponible. Caso true,se elimina de la lista
@@ -291,12 +298,12 @@ namespace Prueba_Trabajo
 				Turno turno = new Turno(paciente, hora);		
 				turnosOcupados.Add(turno);
 				turnosDisponibles.RemoveAt(turnosDisponibles.IndexOf(hora));
-				Console.WriteLine("Turno de las "+ hora + " agregado exitosamente!");
+				Console.WriteLine("\n*********Turno de las "+ hora + " agregado exitosamente!**********");
 			}
 				        							  				
 			else if ((turnosDisponibles.Count == 0) && (turnosOcupados.Count == 9)){ //Si listaDisponible esta vacia y  ListaOcupada completa es 
 						                                                             // que ya no hay turnos disponibles
-				Console.WriteLine("Horarios no disponibles, llamar próximo día de atencion");	
+				Console.WriteLine("\nHorarios no disponibles, llamar próximo día de atencion");	
 			}
 		}
 		
@@ -309,11 +316,11 @@ namespace Prueba_Trabajo
 					
 					turnosOcupados.RemoveAt(turnosOcupados.IndexOf(x));
 					turnosDisponibles.Add(horario);
-					Console.WriteLine("Turno de las "+ horario +" eliminado");
+					Console.WriteLine("\n**************Turno de las "+ horario +" eliminado!***************");
 					break;
 				}
 				else{
-					Console.WriteLine("El turno de las " + horario + " no puede ser eliminado porque esta disponible.");					
+					Console.WriteLine("\nEl turno de las " + horario + " no puede ser eliminado porque esta disponible.");					
 					break;
 				}
 			}
@@ -326,12 +333,12 @@ namespace Prueba_Trabajo
 			
 					for (int i = turnosOcupados.Count; i <= turnosOcupados.Count; i++) {
 					
-						Console.WriteLine("El turno de las "+ x.Horario + " esta ocupado por "+ x.Paciente.Nombre);
+						Console.WriteLine("\nEl turno de las "+ x.Horario + " esta ocupado por "+ x.Paciente.Nombre);
 					}
 				}
 			}
 			else{
-				Console.WriteLine("Actualmente no hay turnos ocupados, por favor ingrese un turno.\n");
+				Console.WriteLine("\nActualmente no hay turnos ocupados, por favor ingrese un turno.\n");
 			}
 		
 		}
