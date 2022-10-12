@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;  
+using System.Linq;  
+using System.Text;  
+using System.Text.RegularExpressions;  
+
 namespace Prueba_Trabajo
 {
 	class Program
 	{
 		public static void Main(string[] args)
 		{
-			Menu();
-			Console.ReadKey(true);
-		}
-	
-		public static void Menu(){
+			//Declaramos las listas que vamos a utilizar durante todo el transcurso de la aplicacion
+			//Para simular una base de datos
 			
 			ArrayList listaPacientes = new ArrayList();
 			ArrayList turnosDisponibles = new ArrayList(){"08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00"};
@@ -21,10 +23,21 @@ namespace Prueba_Trabajo
 			                 "\n*********BIENVENIDO AL SISTEMA DE GESTION DE TURNOS*********" + 
 			                "\n************************************************************");
 			
+			Menu(listaPacientes,turnosDisponibles,turnosOcupados,obrasSociales);
+			Console.ReadKey(true);
+		}
+	
+		public static void Menu(ArrayList listaPacientes, ArrayList turnosDisponibles, ArrayList turnosOcupados, ArrayList obrasSociales){
+			
 			MostrarOpciones();
-
-			int opcion = int.Parse(Console.ReadLine());
-			while (opcion != 0) {
+			
+			try{ 
+				//El menu de opciones esta dentro de un try para atrapar cualquier excepcion que pueda incurrir, en este caso la unica
+				//excepcion posible es en caso de que una opcion sea invalida
+				
+				int opcion = int.Parse(Console.ReadLine());
+				
+				while (opcion != 0) {
 				
 				if (opcion == 1) {
 					
@@ -148,17 +161,28 @@ namespace Prueba_Trabajo
 					opcion = int.Parse(Console.ReadLine());
 				}
 			}
-		}
-		
-		public static Paciente CrearPaciente(ArrayList listaPacientes, ArrayList obraSociales){
+			}catch(Exception){
+				Console.WriteLine("La opcion ingresada no es valida, por favor intente nuevamente: ");
+				Menu(listaPacientes,turnosDisponibles,turnosOcupados,obrasSociales);
+			}
+				
+}
 			
-			Console.WriteLine("\n-Ingrese nombre del paciente:\n");
-			string nombre = Console.ReadLine().ToUpper();
-			Console.WriteLine("\n-Ingrese dni del paciente:\n");
-			int dni = int.Parse(Console.ReadLine());
-			Console.WriteLine("\n-Tiene obra social?:	      (Ingrese si/no)\n");
-			string condicion = Console.ReadLine().ToUpper();
-			if (condicion == "si") {
+		public static void CrearPaciente(ArrayList listaPacientes, ArrayList obraSociales){
+			
+			try{
+				Console.WriteLine("\n-Ingrese nombre del paciente:\n");
+				string nombre = Console.ReadLine().ToUpper();
+				//El metodo Match corrobora si el nombre ingresado respeta el patron establecido en la regex
+				//Luego indicamos que nos devuelva un booleano con Success
+				if(!Regex.Match(nombre, @"^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)").Success){ 
+					throw new NombreInvalidoException();
+				}
+				Console.WriteLine("\n-Ingrese dni del paciente:\n");
+				int dni = int.Parse(Console.ReadLine());
+				Console.WriteLine("\n-Tiene obra social?:	      (Ingrese si/no)\n");
+				string condicion = Console.ReadLine().ToUpper();
+				if (condicion == "si") {
 				Console.WriteLine("\n-Ingrese la obra social del paciente:\n");
 				string obra_social = Console.ReadLine().ToUpper();
 				Console.WriteLine("\n-Ingrese el numero de afiliado del paciente:\n");
@@ -170,9 +194,7 @@ namespace Prueba_Trabajo
 				if (!(obraSociales.Contains(paciente.Obra_social))) {				//Agregar obra social del paciente a la lista
 					obraSociales.Add(paciente.Obra_social);
 				}
-				Console.WriteLine("\n***************¡Paciente agregado con exito!****************\n");
-				//Console.WriteLine("------------------------------------------------------------")
-				return paciente;		
+				Console.WriteLine("\n***************¡Paciente agregado con exito!****************\n");		
 			}
 				
 			else{
@@ -183,9 +205,17 @@ namespace Prueba_Trabajo
 				Paciente paciente = new Paciente(nombre, dni, obra_social, nro_afiliado,diagnostico);
 			    listaPacientes.Add(paciente);										//Agregar paciente a la lista de pacientes
 			    Console.WriteLine("Paciente agregado con exito!.\n");
-				return paciente;
 			
 			}
+			}catch(FormatException){
+				Console.WriteLine("Formato de dato ingresado no valido");
+				CrearPaciente(listaPacientes,obraSociales);
+			}catch(NombreInvalidoException){
+				Console.WriteLine("El nombre ingresado no es valido, por favor intente nuevamente.");
+			}
+			
+			
+			
 		}
 		
 		public static void BorrarPaciente(ArrayList listaPacientes ,int dniBuscar){
