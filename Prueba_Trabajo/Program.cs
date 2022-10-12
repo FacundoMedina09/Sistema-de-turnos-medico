@@ -183,7 +183,7 @@ namespace Prueba_Trabajo
 				int dni = int.Parse(Console.ReadLine());
 				Console.WriteLine("\n-Tiene obra social?:	      (Ingrese si/no)\n");
 				string condicion = Console.ReadLine().ToUpper();
-				if (condicion == "si") {
+				if (condicion == "SI") {
 				Console.WriteLine("\n-Ingrese la obra social del paciente:\n");
 				string obra_social = Console.ReadLine().ToUpper();
 				Console.WriteLine("\n-Ingrese el numero de afiliado del paciente:\n");

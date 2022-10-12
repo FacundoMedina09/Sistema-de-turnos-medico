@@ -1,21 +1,6 @@
-C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.csprojResolveAssemblyReference.cache
-C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.exe.config
-C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.exe
-C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.pdb
-C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.exe
-C:\Users\zonny\Documents\SharpDevelop Projects\Prueba_Trabajo\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.pdb
-<<<<<<< HEAD
 C:\Users\zonny\Documents\SharpDevelop Projects\Sistema-de-turnos-medico\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.exe.config
 C:\Users\zonny\Documents\SharpDevelop Projects\Sistema-de-turnos-medico\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.exe
 C:\Users\zonny\Documents\SharpDevelop Projects\Sistema-de-turnos-medico\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.pdb
 C:\Users\zonny\Documents\SharpDevelop Projects\Sistema-de-turnos-medico\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.csprojResolveAssemblyReference.cache
 C:\Users\zonny\Documents\SharpDevelop Projects\Sistema-de-turnos-medico\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.exe
 C:\Users\zonny\Documents\SharpDevelop Projects\Sistema-de-turnos-medico\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.pdb
-=======
-E:\Users\Angel\Documents\facultad\Materias\Algoritmos y programación\Trabajo-Integrador\Sistema-de-turnos-medico\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.exe.config
-E:\Users\Angel\Documents\facultad\Materias\Algoritmos y programación\Trabajo-Integrador\Sistema-de-turnos-medico\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.exe
-E:\Users\Angel\Documents\facultad\Materias\Algoritmos y programación\Trabajo-Integrador\Sistema-de-turnos-medico\Prueba_Trabajo\bin\Debug\Prueba_Trabajo.pdb
-E:\Users\Angel\Documents\facultad\Materias\Algoritmos y programación\Trabajo-Integrador\Sistema-de-turnos-medico\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.csprojResolveAssemblyReference.cache
-E:\Users\Angel\Documents\facultad\Materias\Algoritmos y programación\Trabajo-Integrador\Sistema-de-turnos-medico\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.exe
-E:\Users\Angel\Documents\facultad\Materias\Algoritmos y programación\Trabajo-Integrador\Sistema-de-turnos-medico\Prueba_Trabajo\obj\Debug\Prueba_Trabajo.pdb
->>>>>>> 71ba31e7f61e881d2d8b8018a4c13a362db4d236
